@@ -19,6 +19,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CorsairLinkPlusPlus.WebView", "CorsairLinkPlusPlus.WebView\CorsairLinkPlusPlus.WebView.csproj", "{CF1B6833-04FA-4C3E-BBC1-B131AD48B17D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CorsairLinkPlusPlus.TrayApp", "CorsairLinkPlusPlus.TrayApp\CorsairLinkPlusPlus.TrayApp.csproj", "{3BA32351-C83C-4A9F-B014-0F1B806D7E65}"
+	ProjectSection(ProjectDependencies) = postProject
+		{32629BC9-7F51-45D7-B756-379E626A5180} = {32629BC9-7F51-45D7-B756-379E626A5180}
+		{367B36E3-FE8A-4673-A5D7-AE03DA33CCE7} = {367B36E3-FE8A-4673-A5D7-AE03DA33CCE7}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

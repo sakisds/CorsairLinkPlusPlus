@@ -2,8 +2,35 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:CorsairLinkPlusPlus.TrayApp"
-             StartupUri="MainWindow.xaml">
+             xmlns:tb="http://www.hardcodet.net/taskbar"
+             ShutdownMode="OnExplicitShutdown">
     <Application.Resources>
-         
+
+        <!-- Resource Dictiory to contain icon -->
+        <ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                            xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                            xmlns:tb="http://www.hardcodet.net/taskbar">
+
+            <!-- Tray ion -->
+            <tb:TaskbarIcon x:Key="TrayIcon"
+                            ToolTipText="hello world">
+
+                <!-- Popup for user interaction -->
+                <tb:TaskbarIcon.TrayPopup>
+                    <Border Background="White"
+                            BorderBrush="Orange"
+                            BorderThickness="2"
+                            CornerRadius="4"
+                            Width="160"
+                            Height="40">
+                        <Button Content="Click Me!"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center" />
+                    </Border>
+                </tb:TaskbarIcon.TrayPopup>
+
+            </tb:TaskbarIcon>
+
+        </ResourceDictionary>
     </Application.Resources>
 </Application>

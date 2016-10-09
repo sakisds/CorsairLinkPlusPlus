@@ -48,6 +48,7 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="CorsairLinkPlusPlus.CLI.licenseheader" />
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CorsairLinkPlusPlus.Common\CorsairLinkPlusPlus.Common.csproj">
