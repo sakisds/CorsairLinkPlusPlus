@@ -8,6 +8,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 using CorsairLinkPlusPlus.Common.Sensor;
+using System.Windows.Controls;
 
 namespace CorsairLinkPlusPlus.TrayApp
 {
@@ -96,5 +97,49 @@ namespace CorsairLinkPlusPlus.TrayApp
                 }
             }
         }
+
+        /// <summary>
+        /// Sets the controller for all fans
+        /// </summary>
+        /// <param name="mode">Mode to set</param>
+        private void SetFanMode(FanMode mode)
+        {
+            var controller = FanModeUtil.FanModeToController(mode);
+            foreach (IControllableSensor fan in fans)
+            {
+                fan.Controller = controller;
+            }
+        }
+
+        #region Event Handlers
+
+        /// <summary>
+        /// Exit app on menu "Exit" click.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Menu_Exit_Click(object sender, RoutedEventArgs e)
+        {
+            trayIcon.Dispose();
+            Application.Current.Shutdown();
+        }
+
+        /// <summary>
+        /// Handle changing the fan mode when user selects the appropriate menu item.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Menu_FanMode_Click(object sender, RoutedEventArgs e)
+        {
+            var menuItem = (MenuItem)sender;
+            switch((string) menuItem.Header)
+            {
+                case "Performance": SetFanMode(FanMode.Performance); break;
+                case "Balanced": SetFanMode(FanMode.Balanced); break;
+                case "Quiet": SetFanMode(FanMode.Quiet); break;
+            }
+        }
+
+        #endregion
     }
 }

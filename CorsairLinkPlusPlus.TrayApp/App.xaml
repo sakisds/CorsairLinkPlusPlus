@@ -13,21 +13,24 @@
 
             <!-- Tray ion -->
             <tb:TaskbarIcon x:Key="TrayIcon"
-                            ToolTipText="hello world">
+                            ToolTipText="CorsairLinkPlusPlus">
 
-                <!-- Popup for user interaction -->
-                <tb:TaskbarIcon.TrayPopup>
-                    <Border Background="White"
-                            BorderBrush="Orange"
-                            BorderThickness="2"
-                            CornerRadius="4"
-                            Width="160"
-                            Height="40">
-                        <Button Content="Click Me!"
-                                HorizontalAlignment="Center"
-                                VerticalAlignment="Center" />
-                    </Border>
-                </tb:TaskbarIcon.TrayPopup>
+                <!-- Context Menu -->
+                <tb:TaskbarIcon.ContextMenu>
+                    <ContextMenu>
+                        <MenuItem Header="Fan Mode"
+                                  IsEnabled="False" />
+                        <MenuItem Header="Performance" 
+                                  Click="Menu_FanMode_Click"/>
+                        <MenuItem Header="Balanced"
+                                  Click="Menu_FanMode_Click" />
+                        <MenuItem Header="Quiet"
+                                  Click="Menu_FanMode_Click" />
+                        <Separator />
+                        <MenuItem Header="Exit"
+                                  Click="Menu_Exit_Click" />
+                    </ContextMenu>
+                </tb:TaskbarIcon.ContextMenu>
 
             </tb:TaskbarIcon>
 
