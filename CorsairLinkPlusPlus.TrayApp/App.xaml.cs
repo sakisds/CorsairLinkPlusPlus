@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using CorsairLinkPlusPlus.Common.Sensor;
 using System.Windows.Controls;
+using CorsairLinkPlusPlus.Common.Controller;
 
 namespace CorsairLinkPlusPlus.TrayApp
 {
@@ -101,13 +102,12 @@ namespace CorsairLinkPlusPlus.TrayApp
         /// <summary>
         /// Sets the controller for all fans
         /// </summary>
-        /// <param name="mode">Mode to set</param>
-        private void SetFanMode(FanMode mode)
+        /// <param name="mode">Controller to use</param>
+        private void SetFanMode(IController mode)
         {
-            var controller = FanModeUtil.FanModeToController(mode);
             foreach (IControllableSensor fan in fans)
             {
-                fan.Controller = controller;
+                fan.Controller = mode;
             }
         }
 
@@ -132,12 +132,20 @@ namespace CorsairLinkPlusPlus.TrayApp
         private void Menu_FanMode_Click(object sender, RoutedEventArgs e)
         {
             var menuItem = (MenuItem)sender;
-            switch((string) menuItem.Header)
-            {
-                case "Performance": SetFanMode(FanMode.Performance); break;
-                case "Balanced": SetFanMode(FanMode.Balanced); break;
-                case "Quiet": SetFanMode(FanMode.Quiet); break;
+            // Clear other checkboxes
+            foreach (Object item in ((ContextMenu)menuItem.Parent).Items)
+            {   
+                if (item is MenuItem)
+                {
+                    ((MenuItem)item).IsChecked = false;
+                }                
             }
+            // Check this item
+            menuItem.IsChecked = true;
+
+            // Change fan mode
+            var fanMode = FanModeUtil.StringToController((string)menuItem.Header);
+            SetFanMode(fanMode);
         }
 
         #endregion

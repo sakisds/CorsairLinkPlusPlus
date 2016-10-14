@@ -7,31 +7,26 @@ using System.Threading.Tasks;
 
 namespace CorsairLinkPlusPlus.TrayApp
 {
-    /// <summary>
-    /// Represents a fan mode
-    /// </summary>
-    enum FanMode
-    {
-        Performance, Balanced, Quiet, Custom, FixedRPM, FixedPercent, Default
-    }
-
     static class FanModeUtil
     {
-        public static IFanController FanModeToController(FanMode mode)
+        /// <summary>
+        /// Creates a new Fan Controller of the given type.
+        /// </summary>
+        /// <param name="mode">What kind of fan controller to create</param>
+        /// <returns>A new fan controller of the requested type</returns>
+        public static IFanController StringToController(string mode)
         {
             switch (mode)
             {
-                case FanMode.Performance: return new PerformanceMode();
-                case FanMode.Balanced: return new BalancedMode();
-                case FanMode.Quiet: return new QuiteMode();
-                case FanMode.Custom: return new CustomCurve();
-                case FanMode.FixedRPM: return new FixedRPM();
-                case FanMode.FixedPercent: return new FixedPercent();
-                case FanMode.Default: return new Default();
+                case "Performance": return new PerformanceMode();
+                case "Balanced": return new BalancedMode();
+                case "Quiet": return new QuiteMode();
+                case "Custom": return new CustomCurve();
+                case "Fixed RPM": return new FixedRPM();
+                case "Fixed %": return new FixedPercent();
+                case "Default": return new Default();
+                default: return null;
             }
-
-            // Unreachable code
-            return null;
         }
     }    
 }
