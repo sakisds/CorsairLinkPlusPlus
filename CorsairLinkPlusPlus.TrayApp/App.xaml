@@ -13,7 +13,8 @@
 
             <!-- Tray ion -->
             <tb:TaskbarIcon x:Key="TrayIcon"
-                            ToolTipText="CorsairLinkPlusPlus">
+                            ToolTipText="CorsairLinkPlusPlus"
+                            IconSource="Icon.ico">
 
                 <!-- Context Menu -->
                 <tb:TaskbarIcon.ContextMenu>
